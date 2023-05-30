@@ -14,11 +14,21 @@ choose_discount = {}
 
 # Prompt the user for the quantity of each product needed and if it is a gift
 prod_a_quant = int(input("Quantity of Product A needed? "))
-prod_a_wrap = input("Should the product be wrapped as a gift?  yes / no (Gift wrap = 1$) ")
+if prod_a_quant > 0:
+    prod_a_wrap = input("Should the product be wrapped as a gift?  yes / no (Gift wrap = 1$) ")
+else:
+    prod_a_wrap = 0
 prod_b_quant = int(input("Quantity of Product B needed? "))
-prod_b_wrap = input("Should the product be wrapped as a gift?  yes / no (Gift wrap = 1$) ")
+if prod_b_quant > 0:
+    prod_b_wrap = input("Should the product be wrapped as a gift?  yes / no (Gift wrap = 1$) ")
+else:
+    prod_b_wrap = 0
 prod_c_quant = int(input("Quantity of Product C needed? "))
-prod_c_wrap = input("Should the product be wrapped as a gift?  yes / no (Gift wrap = 1$) ")
+if prod_c_quant > 0:
+    prod_c_wrap = input("Should the product be wrapped as a gift?  yes / no (Gift wrap = 1$) ")
+else:
+    prod_c_wrap = 0
+
 
 
 def update_cart(cart, products, product, prod_quant, prod_wrap):
@@ -133,7 +143,8 @@ print('\n--------CART---------\n')
 print(f"Total Items\t\t\t:\t{total_quantity}")
 print("-"*30)
 for key,value in cart.items():
-    print(f"{key}\tX\t{value['quantity']}\t:\t{value['price']}$")
+    if value['quantity'] > 0:
+        print(f"{key}\tX\t{value['quantity']}\t:\t{value['price']}$")
 print("-"*30)
 print(f"SubTotal\t\t\t:\t{sub_total}$")
 print("-"*30)
